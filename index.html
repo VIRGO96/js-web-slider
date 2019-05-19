@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Javascript Slideshow</title>
+<style>
+.mySlides {display:none;}
+</style>
+</head>
+
+<body>
+
+<h2 class="w3-center">Javascript Handled Slideshow</h2>
+
+<div class="w3-content w3-section" style="max-width:500px">
+  <img class="mySlides" style="width:100%">
+  <img class="mySlides" style="width:100%">
+  <img class="mySlides" style="width:100%">
+  <img class="mySlides" style="width:100%">
+  <img class="mySlides" style="width:100%">
+</div>
+
+<script>
+var myIndex = 0;
+var seconds=0;
+imagetime();
+
+function carousel() {
+  var i;
+  var imagearray=["img1.jpg",
+  "img2.jpg",
+  "img3.jpg",
+  "img4.jpg",
+  "img5.jpg"]
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+    x[i].src=imagearray[i];
+
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, seconds);
+}
+
+function imagetime()
+{
+     seconds = parseInt(prompt("Provide image vieweing time in seconds", ));
+     seconds=seconds*1000;
+     if(isNaN(seconds))
+     {
+       alert("make sure to provide a correct number for slider to display")
+       imagetime() 
+     }
+     else
+     {
+        carousel()
+     }
+}
+</script>
+
+</body>
+</html>
